@@ -2,20 +2,17 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { SharedModule } from '../../shared/shared.module';
 import { Usuario } from '../model/usuario';
 import { UsuariosService } from '../services/usuarios.service';
-import { SharedModule } from '../../shared/shared.module';
-import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute, Router } from '@angular/router';
-
-
-
 
 @Component({
   selector: 'app-usuarios',
@@ -61,6 +58,7 @@ onError(errorMsg: string) {
 }
 
 onAdd() {
+  console.log("ok")
   this.router.navigate(['new'], {relativeTo:this.route});
 }
 
