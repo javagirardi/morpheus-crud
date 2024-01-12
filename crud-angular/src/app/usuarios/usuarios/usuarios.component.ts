@@ -13,6 +13,12 @@ import { ErrorDialogComponent } from '../../shared/components/error-dialog/error
 import { SharedModule } from '../../shared/shared.module';
 import { Usuario } from '../model/usuario';
 import { UsuariosService } from '../services/usuarios.service';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
+
+
 
 @Component({
   selector: 'app-usuarios',
@@ -25,7 +31,9 @@ import { UsuariosService } from '../services/usuarios.service';
     CommonModule,
     MatDialogModule,
     SharedModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
