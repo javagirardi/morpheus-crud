@@ -4,6 +4,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { UsuariosService } from '../services/usuarios.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,7 +17,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSnackBarModule,
 
   ],
 
@@ -26,15 +29,24 @@ export class UsuarioFormComponent {
 
 form: FormGroup;
 
-constructor(private formBuilder: FormBuilder) {
+constructor(private formBuilder: FormBuilder,
+  private service: UsuariosService,
+  private snackBar: MatSnackBar) {
 
   this.form = this.formBuilder.group({
   name: [null],
   phone: [null]
 });
   }
-  onSubmit(){}
+  onSubmit(){
+    this.service.save(this.form.value)
+    .subscribe(result => console.log(result), error => this.onError());
+  }
 
   onCancel(){}
+
+  private onError(){
+    this.snackBar.open('Erro ao salvar usuário', '', {duration: 5000});
+  }
 
 }

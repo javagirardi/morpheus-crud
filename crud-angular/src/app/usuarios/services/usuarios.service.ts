@@ -19,4 +19,9 @@ export class UsuariosService {
       first(),
     );
   }
+
+  save(record: Usuario){
+    return this.httpClient.post<Usuario>(this.API, record).pipe(first());
+  }
+
 }
