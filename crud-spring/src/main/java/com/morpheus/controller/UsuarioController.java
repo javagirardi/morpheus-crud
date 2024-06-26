@@ -4,9 +4,10 @@ import com.morpheus.model.Usuario;
 import com.morpheus.repository.UsuarioRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +20,15 @@ public class UsuarioController {
 
 
     @GetMapping
-    public List<Usuario> list(){
+    public @ResponseBody List<Usuario> list(){
         return usuarioRepository.findAll();
+    }
+
+    //@RequestMapping(RequestMethod.POST)
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Usuario create(@RequestBody Usuario usuario){
+        return usuarioRepository.save(usuario);
+
     }
 }
