@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -28,26 +28,24 @@ import { UsuariosService } from '../services/usuarios.service';
   templateUrl: './usuario-form.component.html',
   styleUrl: './usuario-form.component.scss'
 })
-export class UsuarioFormComponent {
+export class UsuarioFormComponent implements OnInit{
 
-form: FormGroup;
+form = this.formBuilder.group({
+  name: [''],
+  phone: ['']
+});
 
-constructor(private formBuilder: FormBuilder,
+constructor(private formBuilder: NonNullableFormBuilder,
   private service: UsuariosService,
   private snackBar: MatSnackBar,
-  private location: Location,
-
-
-  )
-  {
-
-  this.form = this.formBuilder.group({
-  name: [null],
-  phone: [null]
-});
+  private location: Location){
+  //this.form
   }
-  onSubmit(){
 
+  ngOnInit(): void{
+  }
+
+  onSubmit(){
     this.service.save(this.form.value)
     .subscribe(result =>this.onSuccess(), error => this.onError());
       }
