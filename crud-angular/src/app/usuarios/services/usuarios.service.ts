@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first } from 'rxjs';
+import { delay, first } from 'rxjs';
 
 import { Usuario } from '../model/usuario';
 
@@ -17,6 +17,7 @@ export class UsuariosService {
     return this.httpClient.get<Usuario[]>(this.API)
     .pipe(
       first(),
+      //delay(5000)
     );
   }
 

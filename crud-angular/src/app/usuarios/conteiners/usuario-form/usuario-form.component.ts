@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { UsuariosService } from '../services/usuarios.service';
+import { UsuariosService } from '../../services/usuarios.service';
 
 
 
