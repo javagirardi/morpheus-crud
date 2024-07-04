@@ -24,6 +24,14 @@ public class UsuarioController {
         return usuarioRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> findById(@PathVariable Long id){
+        return usuarioRepository.findById(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
+
+    }
+
     //@RequestMapping(RequestMethod.POST)
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
