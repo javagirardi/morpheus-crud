@@ -6,6 +6,7 @@
       *ngIf="usuarios$ | async as usuarios; else loading"
       [usuarios]="usuarios"
       (add)="onAdd()"
+      (edit)="onEdit($event)"
     ></app-usuarios-list>
 
   <ng-template #loading>

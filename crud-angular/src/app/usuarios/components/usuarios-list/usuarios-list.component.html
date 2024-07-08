@@ -20,7 +20,7 @@
 
     <mat-cell *matCellDef="let usuario" class="action-column">
       <button mat-icon-button color="edit" aria-label="Editar Usuário">
-        <mat-icon>edit</mat-icon>
+        <mat-icon (click) ="onEdit(usuario)">edit</mat-icon>
       </button>
 
       <button mat-icon-button color="warn" aria-label="Remover Usuário"></button>

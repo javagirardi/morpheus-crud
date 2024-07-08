@@ -69,4 +69,8 @@ onAdd() {
   this.router.navigate(['new'], {relativeTo:this.route});
 }
 
+onEdit(usuario: Usuario){
+  this.router.navigate(['edit', usuario._id], {relativeTo:this.route});
+}
+
 }

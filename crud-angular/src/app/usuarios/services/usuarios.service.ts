@@ -21,6 +21,9 @@ export class UsuariosService {
     );
   }
 
+  loadById(id: String){
+    return this.httpClient.get<Usuario>(`${this.API}/${id}`);
+  }
   save(record: Partial<Usuario>){
     return this.httpClient.post<Usuario>(this.API, record).pipe(first());
   }

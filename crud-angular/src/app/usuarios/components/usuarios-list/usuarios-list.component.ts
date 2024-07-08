@@ -19,6 +19,7 @@ export class UsuariosListComponent {
 
   @Input() usuarios: Usuario[] = [];
   @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
 
   readonly displayedColumns = ['name','phone', 'actions'];
 
@@ -26,5 +27,10 @@ export class UsuariosListComponent {
 
     onAdd() {
       this.add.emit(true);
+    }
+
+    onEdit(usuario: Usuario){
+      this.edit.emit(usuario);
+
     }
 }
